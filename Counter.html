@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Word Counter</h1>
+    <textarea id="textInput" rows="5" cols="50" placeholder="Type or paste your text here"></textarea>
+    <br>
+    <p>Word count: <span id="wordCount">0</span></p>
+
+    <script>
+        // Function to count words
+        function countWords() {
+            var textInput = document.getElementById('textInput');
+            var wordCountSpan = document.getElementById('wordCount');
+
+            // Remove leading and trailing whitespaces
+            var text = textInput.value.trim();
+
+            // Handle empty input
+            if (text === '') {
+                wordCountSpan.textContent = '0';
+                return;
+            }
+
+            // Split the text into words and count them
+            var words = text.split(/\s+/);
+            var count = words.length;
+
+            // Update the word count display
+            wordCountSpan.textContent = count;
+        }
+
+        // Attach the countWords function to the input event of the textarea
+        var textInput = document.getElementById('textInput');
+        textInput.addEventListener('input', countWords);
+    </script>
+</body>
+</html>
